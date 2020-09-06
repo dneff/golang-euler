@@ -12,20 +12,9 @@ product of two 3-digit numbers.
 
 import (
 	"fmt"
+
+	"github.com/dneff/golang-euler/euler"
 )
-
-func isPalindrome(x int64) bool {
-	// reverse the number and compare values
-	// could be made more efficient by comparing values as we go
-
-	var reversed int64
-	for y := int64(x); y > 0; {
-		reversed *= 10
-		reversed += y % 10
-		y /= 10
-	}
-	return x == reversed
-}
 
 func main() {
 	// start with maximum 3-digit numbers and work down
@@ -40,7 +29,7 @@ palindromeCheck:
 		i := maxValue - decr
 		j := maxValue
 		for i <= j {
-			if isPalindrome(i * j) {
+			if euler.IsPalindrome(i * j) {
 				result = i * j
 				break palindromeCheck
 			}

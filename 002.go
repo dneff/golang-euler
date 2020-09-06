@@ -14,28 +14,19 @@ even-valued terms.
 
 import (
 	"fmt"
+
+	"github.com/dneff/golang-euler/euler"
 )
 
-func fibonacci(max int32) []int32 {
-	result := []int32{1, 1}
-	a := int32(1)
-	b := int32(1)
-	next := a + b
-	for (a + b) <= max {
-		next = a + b
-		result = append(result, next)
-		a = b
-		b = next
-	}
-	return result
-}
-
 func main() {
-	fmt.Print("By considering the terms in the Fibonacci\nsequence whose values do not exceed four million,\nfind the sum of the even-valued terms.\n")
+	fmt.Println("By considering the terms in the Fibonacci")
+	fmt.Println("sequence whose values do not exceed four million,")
+	fmt.Println("find the sum of the even-valued terms.")
+
 	maxValue := int32(3999999)
 	result := int32(0)
 
-	for _, x := range fibonacci(maxValue) {
+	for _, x := range euler.Fibonacci(maxValue) {
 		if x%2 == 0 {
 			result += int32(x)
 		}
