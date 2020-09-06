@@ -11,6 +11,7 @@ What is the largest prime factor of the number 600851475143 ?
 */
 
 func findPrimes(max int64) []int64 {
+	//return array of primes less then or equal to max
 	results := []int64{2, 3}
 	for i := int64(5); i <= max; i += 2 {
 		maxPrime := int64(math.Sqrt(float64(i)) + 1)
@@ -34,7 +35,7 @@ func findPrimes(max int64) []int64 {
 func main() {
 	fmt.Println("What is the largest prime factor of the number 600851475143 ?")
 	number := int64(600851475143)
-	maxFactor := int64(math.Sqrt(float64(number)))
+	maxFactor := int64(math.Sqrt(float64(number)) + 1)
 	factors := []int64{}
 	possiblePrimes := findPrimes(maxFactor)
 
