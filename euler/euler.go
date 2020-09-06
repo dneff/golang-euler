@@ -1,6 +1,8 @@
 package euler
 
-import "math"
+import (
+	"math"
+)
 
 //Less returns lesser integer
 func Less(x int64, y int64) int64 {
@@ -67,4 +69,32 @@ func FindPrimes(max int64) []int64 {
 		}
 	}
 	return results
+}
+
+//FindFactors returns array of factors of an integer
+func FindFactors(x int64) []int64 {
+	// get all possible primes
+	if x == 1 {
+		return []int64{1}
+	}
+	primes := FindPrimes(x)
+	factors := []int64{}
+	// as long as we find factors, keep circling through...
+	factoring := true
+	for factoring {
+		factoring = false
+		for _, f := range primes {
+			if x%int64(f) == 0 {
+				factors = append(factors, int64(f))
+				x = x / int64(f)
+				factoring = true
+				break
+			}
+		}
+	}
+	// if there were no factors, return x
+	if len(factors) < 1 {
+		factors = append(factors, x)
+	}
+	return factors
 }
